@@ -1,7 +1,11 @@
 import java.io.File;
 import java.awt.*;
 import java.awt.event.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.io.IOException;
+
 
 public class Login implements ActionListener, ItemListener {
 
@@ -16,20 +20,17 @@ public class Login implements ActionListener, ItemListener {
      *                 Argument 2 is a local filename
      *
      */
-	 	JFrame f=new JFrame("MailADoc Hybrid Mail Service Printer - Login");
+	 	JFrame f=new JFrame("OurSmart OfficePrinter - Login");
 
-	 	JLabel lXmlSoapRequest=new JLabel("Stock XML Path:");
 	    JLabel l1=new JLabel("Username:");
 	    JLabel l2=new JLabel("Password:");
 	    JLabel l3=new JLabel("Remember Me:");
 	    
-	    JTextField tXmlSoapRequest=new JTextField(APITest.fl + "Sample.xml");
 	    JTextField t1=new JTextField();
 	    JTextField t2=new JTextField();
 	    JCheckBox c1 = new JCheckBox();
 	    
-	    JButton b1=new JButton("Go");
-	    JButton b2=new JButton("Test");
+	    JButton b1=new JButton("Login");
         File fLoginXmlCheck = new File(APITest.fl + "Login.xml");
         Boolean bForgetCheck = false;
 	    
@@ -38,29 +39,24 @@ public class Login implements ActionListener, ItemListener {
 	    	File fTmpFolder = new File(System.getProperty("java.io.tmpdir") + APITest.sCustomerName);
 	    	if (!fTmpFolder.exists())
 	    		fTmpFolder.mkdir();
-	    	lXmlSoapRequest.setBounds(50, 50, 300, 20);
-	    	tXmlSoapRequest.setBounds(50, 70, 300, 20);
 	    	
-	        l1.setBounds(50,100,300,20);
-	        t1.setBounds(50,120,300,20);
-	        if(fLoginXmlCheck.exists())
-	        	t1.setEnabled(false);
-	        l2.setBounds(50,150,300,20);        
-	        t2.setBounds(50,170,300,20);
-	        if(fLoginXmlCheck.exists())
-	        	t2.setEnabled(false);
+	        l1.setBounds(50,20,200,25);
+	        t1.setBounds(50,40,200,25);
+	        l2.setBounds(50,70,200,25);        
+	        t2.setBounds(50,90,200,25);
 	        //t2.setEchoChar('*');
-	        l3.setBounds(50, 200, 300, 20);
-	        c1.setBounds(150, 200, 20, 20);
+	        l3.setBounds(50, 120, 200, 25);
+	        c1.setBounds(150, 120, 25, 25);
 
-	        if (fLoginXmlCheck.exists())
+	        if (fLoginXmlCheck.exists()) {
+	        	t1.setText(XMLCommands.XmlAttributeRecall(APITest.fl + "Login.xml", "Username", ""));
+	        	t2.setText(XMLCommands.XmlAttributeRecall(APITest.fl + "Login.xml", "Password", ""));
+	        	t1.setEnabled(false);
+	        	t2.setEnabled(false);
 	        	c1.setSelected(true);
+	        }
+	        b1.setBounds(50,150,200,20);
 	        
-	        b1.setBounds(50,300,300,20);
-	        b2.setBounds(50, 320, 300, 20);
-	        
-	        f.add(lXmlSoapRequest);
-	        f.add(tXmlSoapRequest);
 	       
 	        f.add(l1);
 	        f.add(l2);
@@ -72,18 +68,25 @@ public class Login implements ActionListener, ItemListener {
 	        f.add(c1);
 	        
 	        f.add(b1);
-	        f.add(b2);
 	        
 	        
 	        b1.addActionListener(this);
-	        b2.addActionListener(this);
 	        c1.addItemListener(this);
 	        
+	        try
+	        {
+	        	f.setIconImage(ImageIO.read(getClass().getResourceAsStream("/Logo.png")));
+	        }
+	        catch (IOException ex)
+	        {
+	        	ErrorBox(ex.toString(), "Logo not found");
+	        }
 	        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        f.setLayout(null);
 	        f.setVisible(true);
-	        f.setSize(400,400);
-	    }
+	        f.setSize(300,210);
+
+	   }
 	    
 	    public void itemStateChanged(ItemEvent e) {
 	    	if(e.getStateChange() == ItemEvent.DESELECTED) {
@@ -94,16 +97,6 @@ public class Login implements ActionListener, ItemListener {
 	    }
 	    
 	    public void actionPerformed(ActionEvent e){
-	    	if (e.getSource() == b2) {
-	    		//ErrorBox(System.getProperty("java.io.tmpdir"), "Test");
-	    		//ErrorBox(System.getProperty("os.name"), "OS");
-	    		/*try {
-	    		l1.setText(PDFCommands.PdfAddressReader("C:\\Users\\Administrator\\Desktop\\Test.pdf", 19 * 2.835, 47 * 2.835, 85 * 2.835, 39 * 2.835));
-	    		}
-	    		catch (Exception ex) {
-	    			
-	    		}*/
-	    	}
 	        if(e.getSource() == b1 ){
 	        	String sCookieResult = "Error";
 	        	if ((t1.getText().isEmpty() || t2.getText().isEmpty()) && !fLoginXmlCheck.exists())
@@ -119,7 +112,7 @@ public class Login implements ActionListener, ItemListener {
 			        		fLoginXmlCheck.delete();
 			        	}
 		        		if (!fLoginXmlCheck.exists())
-		        			XMLCommands.XmlLoginParser(tXmlSoapRequest.getText(), t1.getText(), t2.getText());
+		        			XMLCommands.XmlLoginParser(APITest.smp, t1.getText(), t2.getText());
 		        		if (c1.isSelected())
 		        		{
 		        			sCookieResult = SOAPCommands.LoginSoapRequest("http://xeroxdemo.minkzmail.co.uk/webservice/api.asmx", "http://www.minkz.net/Login", APITest.fl+ "Login.xml", false);
@@ -141,7 +134,7 @@ public class Login implements ActionListener, ItemListener {
 		            else
 		            {
 		            	try {
-		            	SOAPCommands.APIRequest("http://xeroxdemo.minkzmail.co.uk/webservice/api.asmx", "http://www.minkz.net/GetTemplates", APITest.fl + "GetTemplates.xml", sCookieResult);
+		            	SOAPCommands.APIRequest("http://xeroxdemo.minkzmail.co.uk/webservice/api.asmx", "http://www.minkz.net/GetTemplates", APITest.tmp, sCookieResult);
 		            	f.setVisible(false);
 		                new PostOptions(sCookieResult);
 		            	}
@@ -157,6 +150,9 @@ public class Login implements ActionListener, ItemListener {
 	    private static void ErrorBox(String sMessage, String sTitle)
 	    {
 	    	JOptionPane.showMessageDialog(null, sMessage, "Error: " + sTitle, JOptionPane.ERROR_MESSAGE);
+	    }
+	    private static void InfoBox(String sMessage, String sTitle) {
+	    	JOptionPane.showMessageDialog(null, sMessage, "Info: " + sTitle, JOptionPane.INFORMATION_MESSAGE);
 	    }
 	   
 }

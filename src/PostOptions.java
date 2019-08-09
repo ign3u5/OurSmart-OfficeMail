@@ -276,7 +276,7 @@ public class PostOptions extends JFrame implements ActionListener {
 	        			if (cSimplex.isSelected())
 	        				iPostFlags += PostFlags.Simplex.getFlagValue();
 	        			sPostFlags = String.valueOf(iPostFlags);
-	        			XMLCommands.XmlPdfParser(APITest.fl + "Sample.xml", APITest.sPdf, "Test", alTemplates.get(cbTemplates.getSelectedIndex()), sPostFlags);
+	        			XMLCommands.XmlPdfParser(APITest.smp, APITest.sPdf, "Test", alTemplates.get(cbTemplates.getSelectedIndex()), sPostFlags);
 	        			SOAPCommands.APIRequest("http://xeroxdemo.minkzmail.co.uk/webservice/api.asmx", "http://www.minkz.net/PostLetter", APITest.fl + "PdfSubmission.xml", sAuthKey);
 	        			fMain.setCursor(cDefault);
 	        			InfoBox("Succesfully Posted", "Posted!");

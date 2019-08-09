@@ -75,6 +75,32 @@ private static ArrayList<String> XmlTemplateType(String sXmlPath, String sReturn
 	   }
 	return alReturnValues;
 }
+
+public static String XmlAttributeRecall(String sXmlPath, String sTagName, String sAttributeName)
+{
+	String sReturn = "";
+	try {
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(sXmlPath);
+		Element eNode;
+		NodeList Templates = doc.getElementsByTagName(sTagName);
+		eNode = (Element)Templates.item(0);
+		if (sAttributeName == "")
+			return eNode.getTextContent();
+		else
+			return eNode.getAttribute(sAttributeName);
+				
+
+	} catch (ParserConfigurationException pce) {
+		pce.printStackTrace();
+	} catch (java.io.IOException ioe) {
+		ioe.printStackTrace();
+	} catch (SAXException sae) {
+		   sae.printStackTrace();
+	}
+	return sReturn;
+}
 	
 public static void XmlLoginParser(String sXmlPath, String sUsername, String sPassword)
 {

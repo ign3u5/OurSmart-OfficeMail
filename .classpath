@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="other files"/>
+	<classpathentry kind="src" path="dependencies"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/commons-codec-1.13.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/commons-io-2.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/fontbox-2.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/org.apache.commons.httpclient.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/pdfbox-2.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/pdf-renderer-1.0.5.jar"/>
+	<classpathentry kind="lib" path="dependencies/commons-codec-1.13.jar"/>
+	<classpathentry kind="lib" path="dependencies/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="dependencies/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="dependencies/fontbox-2.0.3.jar"/>
+	<classpathentry kind="lib" path="dependencies/org.apache.commons.httpclient.jar"/>
+	<classpathentry kind="lib" path="dependencies/pdf-renderer-1.0.5.jar"/>
+	<classpathentry kind="lib" path="dependencies/pdfbox-2.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
