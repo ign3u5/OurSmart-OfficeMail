@@ -277,7 +277,7 @@ public class PostOptions extends JFrame implements ActionListener {
 	        				iPostFlags += PostFlags.Simplex.getFlagValue();
 	        			sPostFlags = String.valueOf(iPostFlags);
 	        			XMLCommands.XmlPdfParser(APITest.smp, APITest.sPdf, "Test", alTemplates.get(cbTemplates.getSelectedIndex()), sPostFlags);
-	        			SOAPCommands.APIRequest("http://xeroxdemo.minkzmail.co.uk/webservice/api.asmx", "http://www.minkz.net/PostLetter", APITest.fl + "PdfSubmission.xml", sAuthKey);
+	        			SOAPCommands.APIRequest(APITest.sApiAddress, APITest.sSoapRequest + "PostLetter", APITest.fl + "PdfSubmission.xml", sAuthKey);
 	        			fMain.setCursor(cDefault);
 	        			InfoBox("Succesfully Posted", "Posted!");
 	        		}

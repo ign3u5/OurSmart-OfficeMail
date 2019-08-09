@@ -68,7 +68,7 @@ public class SOAPCommands {
             // Display response
             System.out.println("Response body: ");
             System.out.println(post.getResponseBodyAsString());
-            if (sSoapAction == "http://www.minkz.net/GetTemplates")
+            if (sSoapAction == APITest.sSoapRequest + "GetTemplates")
             	XMLCommands.XmlResponseParser(APITest.fl, post.getResponseBodyAsString(), "GetTemplatesResponse");
             
            // System.out.println(post.getResponseHeader("Set-Cookie"));

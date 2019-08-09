@@ -115,11 +115,11 @@ public class Login implements ActionListener, ItemListener {
 		        			XMLCommands.XmlLoginParser(APITest.smp, t1.getText(), t2.getText());
 		        		if (c1.isSelected())
 		        		{
-		        			sCookieResult = SOAPCommands.LoginSoapRequest("http://xeroxdemo.minkzmail.co.uk/webservice/api.asmx", "http://www.minkz.net/Login", APITest.fl+ "Login.xml", false);
+		        			sCookieResult = SOAPCommands.LoginSoapRequest(APITest.sApiAddress, APITest.sSoapRequest + "Login", APITest.fl+ "Login.xml", false);
 		        		}
 		        		else
 		        		{
-		        			sCookieResult = SOAPCommands.LoginSoapRequest("http://xeroxdemo.minkzmail.co.uk/webservice/api.asmx", "http://www.minkz.net/Login", APITest.fl + "Login.xml", true);
+		        			sCookieResult = SOAPCommands.LoginSoapRequest(APITest.sApiAddress, APITest.sSoapRequest + "Login", APITest.fl + "Login.xml", true);
 		        		}
 		        	}
 		        	catch  (Exception ex)
@@ -134,7 +134,7 @@ public class Login implements ActionListener, ItemListener {
 		            else
 		            {
 		            	try {
-		            	SOAPCommands.APIRequest("http://xeroxdemo.minkzmail.co.uk/webservice/api.asmx", "http://www.minkz.net/GetTemplates", APITest.tmp, sCookieResult);
+		            	SOAPCommands.APIRequest(APITest.sApiAddress, APITest.sSoapRequest + "GetTemplates", APITest.tmp, sCookieResult);
 		            	f.setVisible(false);
 		                new PostOptions(sCookieResult);
 		            	}
