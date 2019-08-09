@@ -6,12 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Java Projects/dependencies/commons-codec-1.13.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Java Projects/dependencies/commons-io-2.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Java Projects/dependencies/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Java Projects/dependencies/fontbox-2.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Java Projects/dependencies/org.apache.commons.httpclient.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Java Projects/dependencies/pdfbox-2.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Java Projects/dependencies/pdf-renderer-1.0.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/commons-codec-1.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/fontbox-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/org.apache.commons.httpclient.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/pdfbox-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/MailADoc/Git Repository/OurSmart-OfficeMail/dependencies/pdf-renderer-1.0.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
