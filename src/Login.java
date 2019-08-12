@@ -120,7 +120,7 @@ public class Login implements ActionListener, ItemListener {
 		            	ErrorBox(sCookieResult, "Error");
 		            	System.out.println(sCookieResult);
 		            }
-		            else
+		            else 
 		            {
 		            	try {
 		            	SOAPCommands.APIRequest(APITest.sApiAddress, APITest.sSoapRequest + "GetTemplates", APITest.tmp, sCookieResult);

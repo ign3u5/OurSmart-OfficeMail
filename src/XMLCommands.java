@@ -86,7 +86,7 @@ public static String XmlAttributeRecall(String sXmlPath, String sTagName, String
 		Element eNode;
 		NodeList Templates = doc.getElementsByTagName(sTagName);
 		eNode = (Element)Templates.item(0);
-		if (sAttributeName == "")
+		if (sAttributeName.equals(""))
 			return eNode.getTextContent();
 		else
 			return eNode.getAttribute(sAttributeName);

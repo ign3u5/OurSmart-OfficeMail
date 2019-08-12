@@ -68,9 +68,9 @@ public class SOAPCommands {
             // Display response
             System.out.println("Response body: ");
             System.out.println(post.getResponseBodyAsString());
-            if (sSoapAction == APITest.sSoapRequest + "GetTemplates")
+            String sCurrentSoapAction = APITest.sSoapRequest + "GetTemplates";
+            if (sSoapAction.equals(sCurrentSoapAction))
             	XMLCommands.XmlResponseParser(APITest.fl, post.getResponseBodyAsString(), "GetTemplatesResponse");
-            
            // System.out.println(post.getResponseHeader("Set-Cookie"));
         } finally {
             // Release current connection to the connection pool once you are done

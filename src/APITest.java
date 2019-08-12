@@ -8,21 +8,21 @@ public class APITest {
 	public static String sSoapRequest = "http://www.minkz.net/";
     public static void main(String[] args) throws Exception {
     	//String sCheck = "s";
-    	//sPdf = args[0];  //For Live 
+    	sPdf = args[0];  //For Live 
     	sApiAddress = "https://officemail.oursmart.co.uk/webservice/api.asmx";
     	if (System.getProperty("os.name").contains("Mac OS X"))
     	{
     		fl = System.getProperty("java.io.tmpdir") + sCustomerName + "/";
-    		tmp = "other files/GetTemplates.xml";
-    		smp = "other files/Sample.xml";
-    		sPdf = "/Users/jonhorler/Desktop/Test.pdf";
+    		tmp = System.getProperty("user.home") + "/.MailADoc/GetTemplates.xml";
+    		smp = System.getProperty("user.home") + "/.MailADoc/Sample.xml";
+    		//sPdf = "/Users/jonhorler/Desktop/Test.pdf";
     	}
     	else
     	{
     		fl = System.getProperty("java.io.tmpdir") + sCustomerName + "\\";
     		smp = "other files\\Sample.xml";
     		tmp = "other files\\GetTemplates.xml";
-    		sPdf = "C:\\Users\\Administrator\\Desktop\\Test.pdf";
+    		//sPdf = "C:\\Users\\Administrator\\Desktop\\Test.pdf";
     	}
     	//new PostOptions(sCheck);
     	new Login();
