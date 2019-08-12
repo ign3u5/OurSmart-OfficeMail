@@ -9,17 +9,6 @@ import java.io.IOException;
 
 public class Login implements ActionListener, ItemListener {
 
-    /**
-     *
-     * Usage:
-     *          java PostSOAP http://mywebserver:80/ SOAPAction c:\foo.xml
-     *
-     *  @param args command line arguments
-     *                 Argument 0 is a URL to a web server
-     *                 Argument 1 is the SOAP Action
-     *                 Argument 2 is a local filename
-     *
-     */
 	 	JFrame f=new JFrame("OurSmart OfficePrinter - Login");
 
 	    JLabel l1=new JLabel("Username:");

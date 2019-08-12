@@ -54,7 +54,7 @@ public class PostOptions extends JFrame implements ActionListener {
 	}
 
     	String sAuthKey;
-	
+    	Boolean bPosted = false;
 		//Frame initialisation
 		JFrame fMain = new JFrame("MailADoc Hybrid Mail Service Printer - Post Options");
 
@@ -254,44 +254,51 @@ public class PostOptions extends JFrame implements ActionListener {
 	    		}
 		        }
 	        if (e.getSource() == bPost) {
-	        	try {
-	        		fMain.setCursor(cWait);
-	        		String sAddress = "";
-	        		try {
-	    	    		sAddress = PDFCommands.PdfAddressReader(APITest.sPdf, 19 * 2.835, 47 * 2.835, 85 * 2.835, 39 * 2.835);
-	    	    		}
+	        	if (!bPosted)
+	        	{
+		        	try {
+		        		fMain.setCursor(cWait);
+		        		String sAddress = "";
+		        		try {
+		    	    		sAddress = PDFCommands.PdfAddressReader(APITest.sPdf, 19 * 2.835, 47 * 2.835, 85 * 2.835, 39 * 2.835);
+		    	    		}
 	    	    		catch (Exception ex) {
 	    	    			ErrorBox(ex.toString(), "Post Error - PostOptions");
 	    	    			fMain.setCursor(cDefault);
 	    	    		}
-	        		
-	        		if (PostcodeCheck(sAddress))
-	        		{
-	        			String sPostFlags = "0";
-	        			int iPostFlags = 0;
-	        			if (cClass.isSelected())
-	        				iPostFlags += PostFlags.FirstClass.getFlagValue();
-	        			if (cColour.isSelected())
-	        				iPostFlags += PostFlags.Colour.getFlagValue();
-	        			if (cSimplex.isSelected())
-	        				iPostFlags += PostFlags.Simplex.getFlagValue();
-	        			sPostFlags = String.valueOf(iPostFlags);
-	        			XMLCommands.XmlPdfParser(APITest.smp, APITest.sPdf, "Test", alTemplates.get(cbTemplates.getSelectedIndex()), sPostFlags);
-	        			SOAPCommands.APIRequest(APITest.sApiAddress, APITest.sSoapRequest + "PostLetter", APITest.fl + "PdfSubmission.xml", sAuthKey);
-	        			fMain.setCursor(cDefault);
-	        			InfoBox("Succesfully Posted", "Posted!");
-	        		}
-	        		else
-	        			ErrorBox("Postcode is invalid (invalid format)", "Address Validity Error");
+		        		
+		        		if (PostcodeCheck(sAddress))
+		        		{
+		        			String sPostFlags = "0";
+		        			int iPostFlags = 0;
+		        			if (cClass.isSelected())
+		        				iPostFlags += PostFlags.FirstClass.getFlagValue();
+		        			if (cColour.isSelected())
+		        				iPostFlags += PostFlags.Colour.getFlagValue();
+		        			if (cSimplex.isSelected())
+		        				iPostFlags += PostFlags.Simplex.getFlagValue();
+		        			sPostFlags = String.valueOf(iPostFlags);
+		        			XMLCommands.XmlPdfParser(APITest.smp, APITest.sPdf, "Test", alTemplates.get(cbTemplates.getSelectedIndex()), sPostFlags);
+		        			SOAPCommands.APIRequest(APITest.sApiAddress, APITest.sSoapRequest + "PostLetter", APITest.fl + "PdfSubmission.xml", sAuthKey);
+		        			fMain.setCursor(cDefault);
+		        			bPosted = true;
+		        			InfoBox("Succesfully Posted", "Posted!");
+		        			bPost.setText("Close");
+		        		}
+		        		else
+		        			ErrorBox("Postcode is invalid (invalid format)", "Address Validity Error");
+		        	}
+		        	catch (Exception ex)
+		        	{
+		        		ErrorBox(ex.toString(), "Error");
+		        		fMain.setCursor(cDefault);
+		        	}
 	        	}
-	        	catch (Exception ex)
+	        	else
 	        	{
-	        		ErrorBox(ex.toString(), "Error");
-	        		fMain.setCursor(cDefault);
+	        		fMain.dispatchEvent(new WindowEvent(fMain, WindowEvent.WINDOW_CLOSING));
 	        	}
-	        	
 	        }
-
 	    }
 
 	    private static void ErrorBox(String sMessage, String sTitle)
