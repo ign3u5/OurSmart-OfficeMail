@@ -1,10 +1,8 @@
 README
 ------
-1) Click the search icon at the top right of the screen
-2) Type Terminal into the search that comes up and press enter
-3) Drop and drag Install.sh onto the terminal window
-4) Press enter
-5) Open the OurSmart OfficeMail file
-6) When prompted, select Install
+1) Drop the MailADoc_Portal_Install folder onto the desktop.
+2) Double click the Installation application file and confirm that you want to install the files. 
+3) Once complete, double click the OurSmart OfficeMail print plugin application.
+4) When prompted, select Install
 
 Congratulations! You have just installed OurSmart OfficeMail Printer.
