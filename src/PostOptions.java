@@ -1,11 +1,8 @@
-import java.io.File;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.image.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
-import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,7 +53,7 @@ public class PostOptions extends JFrame implements ActionListener {
     	String sAuthKey;
     	Boolean bPosted = false;
 		//Frame initialisation
-		JFrame fMain = new JFrame("MailADoc Hybrid Mail Service Printer - Post Options");
+		JFrame fMain = new JFrame("OurSmart OfficeMail - Post Options");
 
 		//Cursor initialisation
 		Cursor cWait = new Cursor(Cursor.WAIT_CURSOR);
@@ -118,6 +115,7 @@ public class PostOptions extends JFrame implements ActionListener {
 	    
 	    PostOptions(String sAuthKey)
 	    {
+	    	
 	    	this.sAuthKey = sAuthKey;
 	    	
 	    	

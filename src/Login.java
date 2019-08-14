@@ -1,15 +1,12 @@
 import java.io.File;
-import java.awt.*;
 import java.awt.event.*;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.io.IOException;
+
 
 
 public class Login implements ActionListener, ItemListener {
 
-	 	JFrame fMain=new JFrame("OurSmart OfficePrinter - Login");
+	 	JFrame fMain=new JFrame("OurSmart OfficeMail - Login");
 
 	    JLabel lUsername=new JLabel("Username:");
 	    JLabel lPassword=new JLabel("Password:");
@@ -151,7 +148,7 @@ public class Login implements ActionListener, ItemListener {
 	    {
 	    	JOptionPane.showMessageDialog(null, sMessage, "Error: " + sTitle, JOptionPane.ERROR_MESSAGE);
 	    }
-	    private static void InfoBox(String sMessage, String sTitle) {
+	    public static void InfoBox(String sMessage, String sTitle) {
 	    	JOptionPane.showMessageDialog(null, sMessage, "Info: " + sTitle, JOptionPane.INFORMATION_MESSAGE);
 	    }
 	   

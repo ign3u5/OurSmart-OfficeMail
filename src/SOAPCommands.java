@@ -23,7 +23,7 @@ public class SOAPCommands {
         HttpClient httpclient = new HttpClient();
         // Execute request
         try {
-            int result = httpclient.executeMethod(post);
+            httpclient.executeMethod(post);
             // Display status code
             //System.out.println("Response status code: " + result);
             // Display response
