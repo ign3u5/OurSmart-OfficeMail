@@ -72,7 +72,6 @@ public class PostOptions extends JFrame implements ActionListener {
 		JPanel jpPostOptions = new JPanel(null);
 		
 		//Label Initialisation 
-	 	JLabel lXmlSoapRequest=new JLabel("Stock XML Path:");
 	    JLabel lClass=new JLabel("First Class");
 	    JLabel lColour=new JLabel("Colour");
 	    JLabel lSimplex=new JLabel("Simplex");
@@ -284,7 +283,8 @@ public class PostOptions extends JFrame implements ActionListener {
 		        			bPost.setText("Close");
 		        		}
 		        		else
-		        			ErrorBox("Postcode is invalid (invalid format)", "Address Validity Error");
+		        			ErrorBox("Postcode is invalid (invalid format). The scanned address was as follows: " + sAddress, "Address Validity Error");
+		        		fMain.setCursor(cDefault);
 		        	}
 		        	catch (Exception ex)
 		        	{
