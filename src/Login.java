@@ -118,6 +118,7 @@ public class Login implements ActionListener, ItemListener {
 		        		{
 		        			sCookieResult = SOAPCommands.LoginSoapRequest(APITest.sApiAddress, APITest.sSoapRequest + "Login", APITest.fl + "Login.xml", true);
 		        		}
+
 		        	}
 		        	catch  (Exception ex)
 		        	{

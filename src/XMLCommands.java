@@ -145,7 +145,6 @@ public static void XmlLoginParser(String sXmlPath, String sUsername, String sPas
 			DOMSource source = new DOMSource(doc);
 			StreamResult result = new StreamResult(new File(APITest.fl + "Login.xml"));
 			transformer.transform(source, result);
-
 			System.out.println("Done Login XML parse");
 
 		   } catch (ParserConfigurationException pce) {

@@ -33,7 +33,8 @@ public class SOAPCommands {
             if (post.getResponseBodyAsString().indexOf("success=\"true\"") < 0)
             {
             	input.delete();
-            	return sResponse.substring(sResponse.indexOf("error_message=\"") + 15, sResponse.indexOf("\"></Response>"));
+            	String sReturn = sResponse.substring(sResponse.indexOf("error_message=\"") + 15, sResponse.indexOf("\"></Response>"));
+            	return sReturn;
             }
             System.out.println("Login successful");
             String sCookie = post.getResponseHeader("Set-Cookie").toString();
