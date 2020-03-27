@@ -132,7 +132,7 @@ public class Login implements ActionListener, ItemListener {
 		            else 
 		            {
 		            	try {
-		            	SOAPCommands.APIRequest(APITest.sApiAddress, APITest.sSoapRequest + "GetTemplates", APITest.tmp, sCookieResult);
+		            	InfoBox(SOAPCommands.APIRequest(APITest.sApiAddress, APITest.sSoapRequest + "GetTemplates", APITest.tmp, sCookieResult), "Soap Request - Further Debugging");
 		            	fMain.setVisible(false);
 		                new PostOptions(sCookieResult);
 		            	}

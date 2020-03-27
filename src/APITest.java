@@ -4,14 +4,14 @@ public class APITest {
 	public static String tmp = "";
 	public static String sPdf = "";
 	public static String sCustomerName = "MailADoc";
-	public static String sApiAddress = "http://xeroxdemo.minkzmail.co.uk/webservice/api.asmx";
+	public static String sApiAddress = "https://xeroxdemo.minkzmail.co.uk/webservice/api.asmx";
 	public static String sSoapRequest = "http://www.minkz.net/";
     public static void main(String[] args) throws Exception {
     	//String sCheck = "s";
     	
     	//Uncomment for Live
-    	//sPdf = args[0];
-    	//sApiAddress = "https://officemail.oursmart.co.uk/webservice/api.asmx";
+    	sPdf = args[0];
+    	sApiAddress = "https://officemail.oursmart.co.uk/webservice/api.asmx";
     	
     	
     	if (System.getProperty("os.name").contains("Mac OS X"))
@@ -21,7 +21,7 @@ public class APITest {
     		smp = System.getProperty("user.home") + "/.MailADoc/Sample.xml";
     		
     		//Comment for Live
-    		sPdf = "/Users/jonhorler/Desktop/Test.pdf";
+    		//sPdf = "/Users/jonhorler/Desktop/Test.pdf";
     	}
     	else
     	{
@@ -30,7 +30,7 @@ public class APITest {
     		tmp = "other files\\GetTemplates.xml";
     		
     		//Comment for Live
-    		sPdf = "C:\\Users\\Administrator\\Desktop\\Test.pdf";
+    		//sPdf = "C:\\Users\\CFarmer\\Desktop\\Test.pdf";
     	}
     	//new PostOptions(sCheck);
     	new Login();
