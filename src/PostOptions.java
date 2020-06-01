@@ -82,41 +82,39 @@ public class PostOptions extends JFrame implements ActionListener {
 	    JTextField tXmlSoapRequest=new JTextField();
 	    
 	    //Checkbox Initialisation
-	    JCheckBox cClass = new JCheckBox();
-	    JCheckBox cColour = new JCheckBox();
-	    JCheckBox cSimplex = new JCheckBox();
+	    JCheckBox cClass;
+	    JCheckBox cColour;
+	    JCheckBox cSimplex;
 	    
 	    //Button Initialisation
-	    JButton bNextPage = new JButton("Next Page");
-	    JButton bPreviousPage = new JButton("Previous Page");
-	    JButton bPost = new JButton("Post");
+	    JButton bNextPage;
+	    JButton bPreviousPage;
+	    JButton bPost;
 	    
-	    //Combo Box Initialisation
-	    JComboBox cbTemplates = new JComboBox();
-	    ArrayList<String> alTemplates = XMLCommands.XmlTemplateParser(APITest.fl + "GetTemplatesResponse.xml", XMLCommands.TemplateReturnType.TITLE);
-	    ArrayList<String> alAddressBox = XMLCommands.XmlTemplateParser(APITest.fl + "GetTemplatesResponse.xml", XMLCommands.TemplateReturnType.ADDRESSBOX);
-	    ArrayList<String> alTemplateOptions = XMLCommands.XmlTemplateParser(APITest.fl + "GetTemplatesResponse.xml", XMLCommands.TemplateReturnType.FLAGS);
-	    String[] saTemplates = new String[alTemplates.size()];
+	    //Combo Box
+	    JComboBox cbTemplates;
+	    ArrayList<String> alTemplates;
+	    ArrayList<String> alAddressBox;
+	    ArrayList<String> alTemplateOptions;
+	    String[] saTemplates;
 
-	    
-	    
-	    //Initialising Pdf Preview
-	    List<BufferedImage> lbiPdfPreview = PDFCommands.ReadPdfAsImage(APITest.sPdf);
+	    //PDF Preview
+	    List<BufferedImage> lbiPdfPreview;
 	    int iCurrentPage = 0;
-	    int iTotalPages = lbiPdfPreview.size();
-	    ImageIcon iiPdfPreview = new ImageIcon(lbiPdfPreview.get(0));
-	    Image image = iiPdfPreview.getImage();
-	    Image iTempPdfPreview = image.getScaledInstance(420, 594, Image.SCALE_SMOOTH);
-	    ImageIcon iiFinalPdfPreview = new ImageIcon(iTempPdfPreview);
-	    JLabel jPdfPreview = new JLabel(iiFinalPdfPreview, JLabel.LEFT);
-	    
-	    
+	    int iTotalPages;
+	    ImageIcon iiPdfPreview;
+	    Image image;
+	    Image iTempPdfPreview;
+	    ImageIcon iiFinalPdfPreview;
+	    JLabel jPdfPreview;
 	    
 	    PostOptions(String sAuthKey)
 	    {
 	    	
 	    	this.sAuthKey = sAuthKey;
 	    	
+	    	InitializePageElements();
+
 	    	
 	    	//Template Label Options
 	    	lTemplates.setBounds(10, 10, 300, 20);
@@ -199,6 +197,48 @@ public class PostOptions extends JFrame implements ActionListener {
 	        fMain.setVisible(true);
 	        fMain.setSize(930,700);
 
+	    }
+	    
+	    private void InitializePageElements()
+	    {
+	    	InitializeCheckbox();
+	    	InitializeButtons();
+	    	InitializeComboBox();
+	    	InitializePDFPreview();
+	    }
+	    
+	    private void InitializeCheckbox()
+	    {
+	    	cClass = new JCheckBox();
+	    	cColour = new JCheckBox();
+	    	cSimplex = new JCheckBox();
+	    }
+	    
+	    private void InitializeButtons()
+	    {
+	    	bNextPage = new JButton("Next Page");
+	    	bPreviousPage = new JButton("Previous Page");
+	    	bPost = new JButton("Post");
+	    }
+	    
+	    private void InitializeComboBox()
+	    {
+	    	cbTemplates = new JComboBox();
+	    	alTemplates = XMLCommands.XmlTemplateParser(APITest.fl + "GetTemplatesResponse.xml", XMLCommands.TemplateReturnType.TITLE);
+	    	alAddressBox = XMLCommands.XmlTemplateParser(APITest.fl + "GetTemplatesResponse.xml", XMLCommands.TemplateReturnType.ADDRESSBOX);
+	    	alTemplateOptions = XMLCommands.XmlTemplateParser(APITest.fl + "GetTemplatesResponse.xml", XMLCommands.TemplateReturnType.FLAGS);
+	    	saTemplates = new String[alTemplates.size()];
+	    }
+	    
+	    private void InitializePDFPreview()
+	    {
+	    	lbiPdfPreview = PDFCommands.ReadPdfAsImage(APITest.sPdf);
+	    	iTotalPages = lbiPdfPreview.size();
+	    	iiPdfPreview = new ImageIcon(lbiPdfPreview.get(0));
+	    	image = iiPdfPreview.getImage();
+	    	iTempPdfPreview = image.getScaledInstance(420, 594, Image.SCALE_SMOOTH);
+	    	iiFinalPdfPreview = new ImageIcon(iTempPdfPreview);
+	    	jPdfPreview = new JLabel(iiFinalPdfPreview, JLabel.LEFT);
 	    }
 	    
 	    public void actionPerformed(ActionEvent e){

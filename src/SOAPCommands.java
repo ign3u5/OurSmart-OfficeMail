@@ -47,9 +47,8 @@ public class SOAPCommands {
             post.releaseConnection();
         }
     }
-    public static String APIRequest(String sUrl, String sSoapAction, String sXmlFilename, String sAuthToken) throws Exception
+    public static void APIRequest(String sUrl, String sSoapAction, String sXmlFilename, String sAuthToken) throws Exception
     {
-    	String sException = "";
         File input = new File(sXmlFilename);
         // Prepare HTTP post
         PostMethod post = new PostMethod(sUrl);
@@ -58,46 +57,37 @@ public class SOAPCommands {
         RequestEntity entity = new FileRequestEntity(input, "text/xml; charset=ISO-8859-1");
         // Get HTTP client
         HttpClient httpclient = new HttpClient();
-        sException += "Instantiation Complete - ";
     	try {
 	        post.setRequestEntity(entity);
-	        sException += "Set request entity - ";
 	        // consult documentation for your web service
 	        post.setRequestHeader("SOAPAction", sSoapAction);
-	        sException += "Set request Soap action - ";
 	        post.setRequestHeader("Cookie", sAuthToken);
-	        sException += "Set request auth token - ";
     	}
     	catch (Exception ex)
     	{
-    		sException += "During setup: " + ex.toString();
+    		throw new Exception(" API Request Set up - " + ex);
     	}
         // Execute request
         try {
         	int result = httpclient.executeMethod(post);
-        	sException += "Set result of execute method - ";
             // Display status code
             System.out.println("Response status code: " + result);
             // Display response
             System.out.println("Response body: ");
             System.out.println(post.getResponseBodyAsString());
-            sException += "Response body as string shown - ";
             String sCurrentSoapAction = APITest.sSoapRequest + "GetTemplates";
-            sException += "Setting string with SOAP request - ";
             if (sSoapAction.equals(sCurrentSoapAction))
             	XMLCommands.XmlResponseParser(APITest.fl, post.getResponseBodyAsString(), "GetTemplatesResponse");
-            sException += "XML Response Parser.";
            // System.out.println(post.getResponseHeader("Set-Cookie"));
         }
         catch (Exception ex)
         {
-        	sException += "During exeuction of request: " + ex.toString();
+        	throw new Exception(" APIRequest Executing Request - " + ex);
         }
         finally {
             // Release current connection to the connection pool once you are done
             post.releaseConnection();
         }
-        return sException;
     }
 
 }

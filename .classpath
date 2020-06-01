@@ -13,7 +13,6 @@
 	<classpathentry kind="lib" path="dependencies/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="dependencies/fontbox-2.0.3.jar"/>
 	<classpathentry kind="lib" path="dependencies/org.apache.commons.httpclient.jar"/>
-	<classpathentry kind="lib" path="dependencies/pdf-renderer-1.0.5.jar"/>
 	<classpathentry kind="lib" path="dependencies/pdfbox-2.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
